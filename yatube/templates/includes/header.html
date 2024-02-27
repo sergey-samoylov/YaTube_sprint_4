@@ -1,0 +1,24 @@
+{% load static%}
+      <!-- Использованы классы бустрапа для создания типовой навигации с логотипом -->
+      <!-- В дальнейшем тут будет создано полноценное меню -->
+      <nav class="navbar bg-body-tertiary">
+        <div class="container">
+          <a
+            class="navbar-brand"
+            href="{% url 'posts:index' %}">
+            <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+            <!-- тег span используется для добавления нужных стилей отдельным участкам текста -->
+            <span style="color:red">Ya</span>tube
+          </a>
+              <div class="form-check form-switch mx-4">
+                <input
+                  class="form-check-input p-2"
+                  type="checkbox"
+                  role="switch"
+                  id="flexSwitchCheckChecked"
+                  checked
+                  onclick="myFunction()"
+                />
+              </div>
+        </div>
+      </nav>      

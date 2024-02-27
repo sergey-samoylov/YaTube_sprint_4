@@ -1,0 +1,27 @@
+<!-- templates/group_list.html -->                   
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- класс py-5 создает отступы сверху и снизу блока -->
+  <div class="container py-5">
+<h1>{% block title %} Посты группы {{ group.title|title }} {% endblock %}</h1>
+
+{% for group in posts %}
+  <ul>
+    <li>
+      Автор: {{ group.author.get_full_name }}
+    </li>
+    <li>
+      Дата публикации: {{ group.pub_date|date:"d E Y" }}
+    </li>
+  </ul>
+    <p>{{ group.text }}</p>
+
+    {% if post.group %}
+      <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
+    {% endif %}
+
+  {% if not forloop.last %}<hr>{% endif %}
+{% endfor %}
+  </div>
+{% endblock %}
