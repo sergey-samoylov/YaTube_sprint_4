@@ -11,12 +11,23 @@ Made with latest Django 5.0.2 and Python 3.11.7
 - git clone this repo
 - activate virtual environment
 - install packages from requirements.txt
-- and run server from yatube_project_2/yatube directory
+- and run the server from **YaTube_spring_4/yatube** directory
 - oh, and by the way, you'll need .env file with your SECRET_KEY from
   settings.py :-)
 
 ### It will look like this
-![YaTube project from Sprint-3](yatube/static/img/yatube_sprint_3.png)
+![YaTube project from Sprint-4](img/1.png)
+
+![YaTube project from Sprint-4](img/2.png)
+
+![YaTube project from Sprint-4](img/3.png)
+
+### And few more little things:
+- changed max posts per page from 10 to 3 (who reads 10 posts one by one anyways?)
+- switched back to English
+- added random images for a post (hey, it's XXI century!)
+- added navigation and links in posts - each text is a link
+- trancated words in listed posts, if post is of interest it should be read in full on its own page
 
 ### Author
 Sergey Samoylov
