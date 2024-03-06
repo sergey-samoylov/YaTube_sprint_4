@@ -1,21 +1,44 @@
 <!-- templates/group_list.html -->                   
 {% extends 'base.html' %}
+{% load static%}
+{% load user_filters %}
 
 {% block content %}
 <!-- класс py-5 создает отступы сверху и снизу блока -->
   <div class="container py-5">
 <h1>{% block title %} Посты группы {{ group.title|title }} {% endblock %}</h1>
 
-{% for group in posts %}
-  <ul>
-    <li>
-      Автор: {{ group.author.get_full_name }}
-    </li>
-    <li>
-      Дата публикации: {{ group.pub_date|date:"d E Y" }}
-    </li>
-  </ul>
-    <p>{{ group.text }}</p>
+{% for group in page_obj %}
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="{% static 'img/random/river_vertical.jpg' %}"
+          class="card-img-top rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title text-body-secondary">
+                All posts by: 
+                    <a
+                        href="{% url 'posts:profile' group.author %}"
+                        class="text-decoration-none text-success"
+                        >{{ group.author.get_full_name }}
+                    </a>
+            </h5>
+            <p class="card-text">
+                {{ group.text|truncatewords:10 }}
+            </p>
+            <p class="card-text">
+            <small class="text-body-secondary">
+                Published on: {{ group.pub_date|date:"d E Y" }}
+            </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
     {% if post.group %}
       <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
@@ -24,4 +47,5 @@
   {% if not forloop.last %}<hr>{% endif %}
 {% endfor %}
   </div>
+
 {% endblock %}

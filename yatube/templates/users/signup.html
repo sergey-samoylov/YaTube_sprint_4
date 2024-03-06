@@ -1,0 +1,51 @@
+<!-- templates/users/signup.html -->
+
+{% extends "base.html" %}
+{% load user_filters %} {# Загружаем фильтры #}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-8 p-5">
+      <div class="card">
+        <div class="card-header d-flex justify-content-center">
+            SIGN UP
+        </div>
+          <div class="card-body">
+          {% include 'users/form_errors.html' %}
+
+
+              <form method="post" action="{% url 'users:signup' %}">
+              {% csrf_token %}
+
+              {# Выводим поля в цикле, по отдельности #}
+              {% for field in form %}
+                <div class="mb-3">
+                  <label for="{{ field.id_for_label }}">
+                    {{ field.label }}
+                      {% if field.field.required %}
+                        <span class="required text-danger">*</span>
+                      {% endif %}
+                  </label>
+                  {# К полю ввода добавляем атрибут class #}
+                  {{ field|addclass:'form-control' }}
+                    {% if field.help_text %}
+                      <small
+                         id="{{ field.id_for_label }}-help"
+                         class="form-text text-muted"
+                      >
+                        {{ field.help_text|safe }}
+                      </small>
+                    {% endif %}
+                </div>
+              {% endfor %}
+              <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-secondary">
+                  Sign Up
+                </button>
+              </div>
+            </form>
+          </div> <!-- card body -->
+        </div> <!-- card -->
+      </div> <!-- col -->
+  </div> <!-- row -->
+{% endblock %}

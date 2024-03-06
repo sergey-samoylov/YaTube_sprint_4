@@ -1,4 +1,4 @@
-# YATUBE PROJECT 2.0 (SPRINT 3)
+# YATUBE PROJECT 2.0 (SPRINT 4)
 
 ### Description
 This is a Yandex.Practicum Yatube learning project.

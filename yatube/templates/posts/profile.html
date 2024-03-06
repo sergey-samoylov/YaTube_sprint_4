@@ -1,23 +1,28 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% load static%}
 {% load user_filters %}
-{% block content %}
+{% block title %} 
+Published by {{ author.get_full_name }} 
+{% endblock %} 
+ 
+    {% block content %} 
+<figure class="text-end">
+  <blockquote class="blockquote">
+    <p>All posts by {{ author.get_full_name }}</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    <cite title="Source Title">Всего постов: {{ author.posts.count }}</cite>
+  </figcaption>
+</figure>
 
 <div class="row row-cols-1 row-cols-md-3 g-4 mt-0">
       {% for post in page_obj %}
 
   <div class="col">
     <div class="card h-100">
-      <img src="{% random_img %}" class="card-img-top" alt="...">
+      <img src="{% static 'img/random/forest.jpg' %}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title text-body-secondary">
-            All posts by: 
-                <a
-                    href="{% url 'posts:profile' post.author %}"
-                    class="text-decoration-none text-success"
-                    >{{ post.author.get_full_name }}
-                </a>
-        </h5>
+        <h5 class="card-title">Published by: {{ post.author.get_full_name }}</h5>
             <a
               href="{% url 'posts:post_detail' post.id %}"
               class="text-decoration-none text-secondary"
@@ -35,11 +40,12 @@
 
       </div>
       <div class="card-footer">
-        <small class="text-body-secondary">Published on:  {{ post.pub_date|date:"d M Y" }}</small>
+        <small class="text-body-secondary">Дата публикации:  {{ post.pub_date|date:"d M Y" }}</small>
       </div>
     </div>
 </div>
   
       {% endfor %}
 </div>
-{% endblock %}
+
+    {% endblock %} 

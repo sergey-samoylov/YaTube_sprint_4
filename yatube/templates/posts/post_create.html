@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load user_filters %}
+{% block title %}
+  {% if is_edit %}
+    Edit this post
+  {% else %}
+    Publish a post
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-md-8 p-5">
+      <div class="card">
+        <div class="card-header d-flex justify-content-center">
+          {% if is_edit %}
+            Edit this post
+          {% else %}
+            Publish this post
+          {% endif %}
+        </div>
+        <div class="card-body">
+          {% include 'users/form_errors.html' %}
+
+          <form method="post"
+            {% if action_url %}
+              action="{% url action_url %}"
+            {% endif %}
+          >
+          {% csrf_token %}
+
+          {% for field in form %}
+            <div class="mb-3"
+              {% if field.field.required %} 
+                aria-required="true"
+              {% else %}
+                aria-required="false"
+              {% endif %}
+            >
+              <label for="{{ field.id_for_label }}">
+                {{ field.label }}
+                  {% if field.field.required %}
+                    <span class="required text-danger">*</span>
+                  {% endif %}
+              </label>
+                <div>
+                  {{ field|addclass:'form-control' }}
+                    {% if field.help_text %}
+                      <small
+                        id="{{ field.id_for_label }}-help"
+                        class="form-text text-muted"
+                      >
+                        {{ field.help_text|safe }}
+                      </small>
+                    {% endif %}
+                </div>
+            </div>
+          {% endfor %}
+          <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-secondary">
+                  {% if is_edit %}
+                    Edit post
+                  {% else %}
+                    Publish
+                  {% endif %}
+                </button>
+            </div>
+          </div>
+          </form>
+        </div> <!-- card body -->
+      </div> <!-- card -->
+    </div> <!-- col -->
+</div> <!-- row -->
+{% endblock %}

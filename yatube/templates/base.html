@@ -16,31 +16,16 @@
         href="{% static 'img/fav/favicon-16x16.png' %}">
     <meta name="msapplication-TileColor" content="#000">
     <meta name="theme-color" content="#ffffff">
-    <!-- Подключен файл со стандартными стилями бустрап -->
-    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous">
-    <!-- скрипт смены тёмной и светлой тем -->
-    <script>
-      function myFunction() {
-        var element = document.body;
-        element.dataset.bsTheme =
-          element.dataset.bsTheme == "light" ? "dark" : "light";
-      }
-      function stepFunction(event) {
-        debugger;
-        var element = document.getElementsByClassName("collapse");
-        for (var i = 0; i < element.length; i++) {
-          if (element[i] !== event.target.ariaControls) {
-            element[i].classList.remove("show");
-          }
-        }
-      }
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    >
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    >
     </script>
-    <title>{% block title %} YaTube default heading {% endblock %}</title>
+
+    <title>{% block title %}YaTube default heading{% endblock %}</title>
   </head>
   <body>
     <div class="container">
@@ -55,7 +40,7 @@
         <!-- border-top: создаёт тонкую линию сверху блока -->
         <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->
         <!-- py-3: контент внутри размещается с отступом сверху и снизу -->         
-        <footer class="border-top text-center py-3">
+        <footer class="text-center py-3">
           {% include 'includes/footer.html' %}
         </footer>
     </div>

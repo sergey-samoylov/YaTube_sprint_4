@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
-
 User = get_user_model()
 
 
@@ -29,6 +28,9 @@ class Post(models.Model):
         null=True,
         blank=True,
     )
+
+    def __str__(self):
+        return self.text
 
 """
 в каждом объекте модели User автоматически будет создано свойство с таким же названием (posts), и в нём будут храниться ссылки на все объекты модели Post, которые ссылаются на объект User.

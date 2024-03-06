@@ -1,0 +1,59 @@
+<!-- templates/about/author.html -->
+{% extends "base.html" %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+
+<figure class="text-end">
+  <blockquote class="blockquote">
+    <p>To write clean and useful code is my religion.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    author <cite title="Source Title">Sergey Samoylov</cite>
+  </figcaption>
+</figure>
+
+<div class="d-flex align-items-center justify-content-center">
+<div>
+
+<div class="card border-primary mb-3" style="max-width: 25rem;">
+  <div class="card-header">Сейчас</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Программист</h5>
+    <p class="card-text">
+    <ul>
+    <li>создаю сайты на Django,</li>
+    <li>пишу скрипты на Bash,</li>
+    <li>проверяю спринты Яндекс.Практикум</li>
+    </ul>
+    </p>
+  </div>
+</div>
+
+<div class="card border-warning mb-3" style="max-width: 25rem;">
+  <div class="card-header">Ранее</div>
+  <div class="card-body">
+    <h5 class="card-title">Журналист</h5>
+    <p class="card-text">
+        От корреспондента до ректора:
+        <ul>
+            <li>"Московский Комсомолец"</li>
+            <li>Life</li>
+            <li>CJMonitor</li>
+        </ul>
+    </p>
+  </div>
+</div>
+
+<div class="card border-success mb-3" style="max-width: 25rem;">
+  <div class="card-header">Всегда</div>
+  <div class="card-body">
+    <h5 class="card-title">Фотограф</h5>
+    <p class="card-text">Это увлечение с кружка пионеров со мной по жизни.
+    Люблю пейзажную съемку, макро, цветы, бабочки... вечное)</p>
+  </div>
+</div>
+
+</div>
+</div>
+
+{% endblock %}
